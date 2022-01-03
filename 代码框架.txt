@@ -1,0 +1,45 @@
+本文提出了两种神经网络模型EDSR和MDSR实现对单张图像的超分辨率处理，并且重现了已有的算法DDBPN，RCAN，RDN，VDSR。
+本文的代码框架如下：
+PS：对*文件进行了详细注释
+###########################EDSR_PyTorch_master##########################################
+dataset：存放训练集和数据集
+experiment：实验结果文件夹，包含模型，日志文件，loss，优化器模型等。
+figs：图像文件夹
+models：
+src:源代码文件夹
+|——data: 数据处理相关代码
+|            |——_init_.py:定义基类Data类和MyConcatDataset类，对输入图像数据批量处理
+|            |——common.py：定义数据处理的相关方法，包括获取批量大小的图像数据，设置图像通道，数据格式转换，增强等。
+|            |——Demo.py：定义Demo类
+|            |——div2k.py：定义DIV2K类，完成类型的转换
+|            |——div2kjpeg.py：定义DIV2KJPEG类，完成类型的转换
+|            |——sr291.py：定义SR291数据类型类
+|            |——srdata.py：定义SRData数据类型类
+|            |——video.py：定义Video数据类型类
+|——loss：损失函数相关代码
+|            |——_init_.py:定义基类Loss类，包括基本方法，step，forward，plot，save，load等
+|            |——adversarial.py:定义神经网络模型Adversarial类，用作生成器
+|            |——discriminator.py:定义神经网络模型Discriminator类，用作鉴别器
+|            |——vgg.py:定义神经网络模型VGG类
+*|——model：神经网络模型相关代码
+|            |——_init_.py:定义神经网络模型基类Model类，包括基本方法，forward，save，load等
+|            |——common.py:构建神经网络模块类，MeanShift类继承二维卷积类，基本模块BasicBlock类，残差模块ResBlock类，上采样类Upsampler。
+|            |——ddbpn.py:构建神经网络模型DDBPN类和DenseProjection类，包括基本方法forward
+|            *|——edsr.py:构建神经网络模型Enhanced Deep Super-Resolution（EDSR）类
+|            *|——mdsr.py: 构建神经网络模型Multi-scale Deep Super-Resolution（MDSR）类
+|            |——rcan.py:构建神经网络模型Residual Channel Attention Networks（RCAN）
+|            |——rdn.py:构建神经网络模型Residual Dense Network（RDN）
+|            |——vdsr.py:构建神经网络模型Very Deep  SuperResolution（VRSR）
+|——_init_.py:空
+|——dataloader.py:定义两种数据加载类MSDataLoader和_MSDataLoaderIter
+*|——main.py:程序入口，主函数
+|——option.py:配置文件，包括硬件、数据类型、网络模型、训练参数等
+|——template.py:对配置文件的处理
+*|——trainer.py:定义模型训练类Trainer类
+*|——utility.py:定义用到的方法和类，包括timer类，checkpoint类
+|——videotester.py:定义视频图像测试类VideoTester
+
+
+
+
+
