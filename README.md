@@ -11,4 +11,5 @@ python main.py --data_test Demo --scale 2 --n_resblocks 32 --n_feats 256 --res_s
 * 结果可见于..\experiment\test\results-Demo目录。
 
 [1] sanghyun-son, EDSR-PyTorch, (2018), GitHub repository, https://github.com/sanghyun-son/EDSR-PyTorch.
+
 [2] https://cv.snu.ac.kr/research/EDSR/model_pytorch.tar.
